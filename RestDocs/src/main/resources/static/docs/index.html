@@ -5,6 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.18">
+<meta name="author" content="Rest Documentation 실습">
 <title>REST DOC EXAMPLE</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -435,42 +436,59 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 #footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
 </head>
-<body class="article">
+<body class="book toc2 toc-left">
 <div id="header">
 <h1>REST DOC EXAMPLE</h1>
 <div class="details">
+<span id="author" class="author">Rest Documentation 실습</span><br>
 <span id="revnumber">version 0.0.1-SNAPSHOT</span>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#POST-API">POST</a>
+<ul class="sectlevel2">
+<li><a href="#GET-POST">GET POST</a>
+<ul class="sectlevel3">
+<li><a href="#GET-POST_http_request">Example request</a></li>
+<li><a href="#GET-POST_http_response">Example response</a></li>
+</ul>
+</li>
+<li><a href="#POST-POST">CREATE POST</a>
+<ul class="sectlevel3">
+<li><a href="#POST-POST_http_request">Example request</a></li>
+<li><a href="#POST-POST_http_response">Example response</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
 <div id="content">
-<div id="preamble">
-<div class="sectionbody">
-<div class="paragraph">
-<p>Rest Documentation 실습</p>
-</div>
-</div>
-</div>
 <div class="sect1">
 <h2 id="POST-API"><a class="link" href="#POST-API">POST</a></h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="GET-POST"><a class="link" href="#GET-POST">GET POST</a></h3>
 <div class="sect3">
-<h4 id="GET-POST_http_request"><a class="link" href="#GET-POST_http_request">HTTP request</a></h4>
+<h4 id="GET-POST_http_request"><a class="link" href="#GET-POST_http_request">Example request</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /post HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /post HTTP/1.1
 Accept: application/json
 Host: localhost</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="GET-POST_http_response"><a class="link" href="#GET-POST_http_response">HTTP response</a></h4>
+<h4 id="GET-POST_http_response"><a class="link" href="#GET-POST_http_response">Example response</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
 Content-Length: 86
 
@@ -485,10 +503,10 @@ Content-Length: 86
 <div class="sect2">
 <h3 id="POST-POST"><a class="link" href="#POST-POST">CREATE POST</a></h3>
 <div class="sect3">
-<h4 id="POST-POST_http_request"><a class="link" href="#POST-POST_http_request">HTTP request</a></h4>
+<h4 id="POST-POST_http_request"><a class="link" href="#POST-POST_http_request">Example request</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">POST /post HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">POST /post HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 Accept: application/json
 Content-Length: 78
@@ -502,10 +520,10 @@ Host: localhost
 </div>
 </div>
 <div class="sect3">
-<h4 id="POST-POST_http_response"><a class="link" href="#POST-POST_http_response">HTTP response</a></h4>
+<h4 id="POST-POST_http_response"><a class="link" href="#POST-POST_http_response">Example response</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
 Content-Length: 78
 
@@ -523,8 +541,15 @@ Content-Length: 78
 <div id="footer">
 <div id="footer-text">
 Version 0.0.1-SNAPSHOT<br>
-Last updated 2023-04-06 14:51:28 +0900
+Last updated 2023-04-06 15:37:07 +0900
 </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+<script>
+if (!hljs.initHighlighting.called) {
+  hljs.initHighlighting.called = true
+  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+}
+</script>
 </body>
 </html>
