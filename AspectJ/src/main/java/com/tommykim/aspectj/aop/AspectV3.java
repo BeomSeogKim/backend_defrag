@@ -29,21 +29,21 @@ public class AspectV3 {
         String sectionId = UUID.randomUUID().toString().substring(0, 8);
 
         MDC.put("sectionId", sectionId);
-        log.info("[controller] [{}] {} {} 실행", sectionId, joinPoint.getSignature().getDeclaringType().getSimpleName(), joinPoint.getSignature().getName());
+        log.info("[sectionId - {}] {} {} 실행", sectionId, joinPoint.getSignature().getDeclaringType().getSimpleName(), joinPoint.getSignature().getName());
         return joinPoint.proceed();
     }
 
     @Around("Service()")
     public Object serviceLog(ProceedingJoinPoint joinPoint) throws Throwable {
         String sectionId = MDC.get("sectionId");
-        log.info("[service] [{}] {} {} 실행", sectionId,joinPoint.getSignature().getDeclaringType().getSimpleName(), joinPoint.getSignature().getName());
+        log.info("[sectionId - {}] {} {} 실행", sectionId,joinPoint.getSignature().getDeclaringType().getSimpleName(), joinPoint.getSignature().getName());
         return joinPoint.proceed();
     }
 
     @Around("Repository()")
     public Object repositoryLog(ProceedingJoinPoint joinPoint) throws Throwable {
         String sectionId = MDC.get("sectionId");
-        log.info("[repository] [{}] {} {} 실행", sectionId, joinPoint.getSignature().getDeclaringType().getSimpleName(), joinPoint.getSignature().getName());
+        log.info("[sectionId - {}] {} {} 실행", sectionId, joinPoint.getSignature().getDeclaringType().getSimpleName(), joinPoint.getSignature().getName());
         return joinPoint.proceed();
     }
 }

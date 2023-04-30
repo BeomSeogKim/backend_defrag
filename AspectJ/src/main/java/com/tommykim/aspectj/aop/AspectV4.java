@@ -26,40 +26,41 @@ public class AspectV4 {
 
     @Around("Controller()")
     public Object controllerLog(ProceedingJoinPoint joinPoint) throws Throwable{
+        String sectionId = UUID.randomUUID().toString().substring(0, 8);
         try {
-            String sectionId = UUID.randomUUID().toString().substring(0, 8);
             MDC.put("sectionId", sectionId);
-            log.info("[controller] [{}] {} {} 실행", sectionId, joinPoint.getSignature().getDeclaringType().getSimpleName(), joinPoint.getSignature().getName());
+            log.info("[sectionId - {}] {} {} 실행", sectionId, joinPoint.getSignature().getDeclaringType().getSimpleName(), joinPoint.getSignature().getName());
             return joinPoint.proceed();
         } catch (RuntimeException e) {
-            log.info("[controller] [{}]",e.getMessage());
+            log.info("[sectionId - {}] {}", sectionId, e.getMessage());
             throw e;
         } finally {
             log.info("문제 해결");
+            MDC.clear();
         }
 
     }
 
     @Around("Service()")
     public Object serviceLog(ProceedingJoinPoint joinPoint) throws Throwable {
+        String sectionId = MDC.get("sectionId");
         try {
-            String sectionId = MDC.get("sectionId");
-            log.info("[service] [{}] {} {} 실행", sectionId, joinPoint.getSignature().getDeclaringType().getSimpleName(), joinPoint.getSignature().getName());
+            log.info("[sectionId - {}] {} {} 실행", sectionId, joinPoint.getSignature().getDeclaringType().getSimpleName(), joinPoint.getSignature().getName());
             return joinPoint.proceed();
         } catch (RuntimeException e) {
-            log.info(e.getMessage());
+            log.info("[sectionId - {}] {}", sectionId,e.getMessage());
             throw e;
         }
     }
 
     @Around("Repository()")
     public Object repositoryLog(ProceedingJoinPoint joinPoint) throws Throwable {
+        String sectionId = MDC.get("sectionId");
         try {
-            String sectionId = MDC.get("sectionId");
-            log.info("[repository] [{}] {} {} 실행", sectionId, joinPoint.getSignature().getDeclaringType().getSimpleName(), joinPoint.getSignature().getName());
+            log.info("[sectionId - {}] {} {} 실행", sectionId, joinPoint.getSignature().getDeclaringType().getSimpleName(), joinPoint.getSignature().getName());
             return joinPoint.proceed();
         } catch (RuntimeException e) {
-            log.info("예외 발생 ");
+            log.info("[sectionId - {}] {}", sectionId, e.getMessage());
             throw e;
         }
 
